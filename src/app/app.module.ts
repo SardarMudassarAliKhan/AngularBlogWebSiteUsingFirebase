@@ -3,6 +3,12 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AngularFireModule } from '@angular/fire/compat';
+import { FirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -10,10 +16,16 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    CKEditorModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    FirestoreModule,
+    MatSlideToggleModule,
+
+    ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
